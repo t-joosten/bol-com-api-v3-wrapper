@@ -1,0 +1,11 @@
+<phpunit colors="true" strict="true" bootstrap="tests/autoload.php">
+    <php>
+        <env name="BOL_CLIENT_ID" value="" force="true"/>
+        <env name="BOL_CLIENT_SECRET" value="" force="true"/>
+    </php>
+    <testsuites>
+        <testsuite name="BolClient">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
