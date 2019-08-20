@@ -31,7 +31,7 @@ class BolClientTest extends TestCase {
 
 	public function testGetOrder() {
 		$client = $this->instantiateBolClient();
-		$res = $client->getOrder(2495433280 );
+		$res = $client->getOrder(2495728860 );
 		$this->assertTrue(true);
 	}
 }

@@ -8,13 +8,26 @@
 
 namespace Tjoosten\BolClient\Entity;
 
-class BolOrderItem extends BolBaseModel {
-	public $orderItemId;
-	public $ean;
-	public $offerPrice;
-	public $cancelRequest;
+/**
+ * Class BolOrderItem
+ * @package Tjoosten\BolClient\Entity
+ *
+ * @param $orderItemId
+ * @param $ean
+ * @param $quantity
+ * @param $cancelRequest
+ * @param $offerReference
+ * @param $title
+ * @param $offerPrice
+ * @param $transactionFee
+ * @param $latestDeliveryDate
+ * @param $offerCondition
+ * @param $fulfilmentMethod
+ *
+ */
 
-	public $attributes = [
+class BolOrderItem extends BolBaseModel {
+	protected $attributes = [
 		'orderItemId',
 		'ean',
 		'quantity',
@@ -27,7 +40,4 @@ class BolOrderItem extends BolBaseModel {
 		'offerCondition',
 		'fulfilmentMethod',
 	];
-
-	public function __construct( ) {
-	}
 }

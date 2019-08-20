@@ -23,12 +23,12 @@ class BolTransformer {
 		$model = $this->createModelByEntityName( $entityName );
 
 		foreach ( $stdClass as $key => $value ) {
-			if ( $this->keyExistsInEntitiesAttributes( $key, $model ) ) {
+			if ( $model->keyExistsInAttributes( $key ) ) {
 				$model->$key = $value;
-			} else if ( $this->keyExistsInEntitiesNestedEntities( $key, $model ) ) {
-				$model->$key = $this->transformToEntity( $value, $model->nestedEntities[ $key ] );
-			} else if ( $this->keyExistsInEntitiesChildEntities( $key, $model ) ) {
-				$model->$key = $this->transformCollection( $value, $model->childEntities[ $key ] );
+			} else if ( $model->keyExistsInNestedEntities( $key ) ) {
+				$model->$key = $this->transformToEntity( $value, $model->getNestedEntityNameByKey($key) );
+			} else if ( $model->keyExistsInChildEntities( $key ) ) {
+				$model->$key = $this->transformCollection( $value, $model->getChildEntityNameByKey($key) );
 			}
 		}
 
@@ -38,17 +38,5 @@ class BolTransformer {
 	private function createModelByEntityName( string $entityName ) {
 		$entityClass = 'Tjoosten\\BolClient\\Entity\\' . $entityName;
 		return new $entityClass;
-	}
-
-	private function keyExistsInEntitiesAttributes( $key, $model ) {
-		return in_array( $key, $model->attributes );
-	}
-
-	private function keyExistsInEntitiesNestedEntities( $key, $model ) {
-		return key_exists( $key, $model->childEntities );
-	}
-
-	private function keyExistsInEntitiesChildEntities( $key, $model ) {
-		return key_exists( $key, $model->nestedEntities );
 	}
 }

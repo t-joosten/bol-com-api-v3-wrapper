@@ -9,12 +9,18 @@ namespace Tjoosten\BolClient\Entity;
  * Time: 14:27
  */
 
-class BolOrder extends BolBaseModel {
-	public $orderId;
-	public $dateTimeOrderPlaced;
-	public $customerDetails;
-	public $orderItems;
+/**
+ * Class BolOrder
+ * @package Tjoosten\BolClient\Entity
+ *
+ * @param $orderId
+ * @param $dateTimeOrderPlaced
+ * @param $orderItems
+ * @param $customerDetails
+ *
+ */
 
+class BolOrder extends BolBaseModel {
 	public $attributes = [
 		'orderId',
 		'dateTimeOrderPlaced',

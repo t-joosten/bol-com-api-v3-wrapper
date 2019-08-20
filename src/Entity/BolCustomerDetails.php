@@ -8,14 +8,25 @@
 
 namespace Tjoosten\BolClient\Entity;
 
+/**
+ * Class BolCustomerDetails
+ * @package Tjoosten\BolClient\Entity
+ *
+ * @param $shipmentDetails
+ * @param $billingDetails
+ */
+
 class BolCustomerDetails extends BolBaseModel {
-	public $attributes = [
-	];
+	protected $attributes = [];
 
-	public $childEntities = [];
+	protected $childEntities = [];
 
-	public $nestedEntities = [
+	protected $nestedEntities = [
 		'shipmentDetails' => 'BolShipmentDetails',
 		'billingDetails' => 'BolBillingDetails'
 	];
+
+	public function __construct() {
+		parent::__construct();
+	}
 }

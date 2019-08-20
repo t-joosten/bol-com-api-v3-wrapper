@@ -8,8 +8,30 @@
 
 namespace Tjoosten\BolClient\Entity;
 
+/**
+ * Class BolBillingDetails
+ * @package Tjoosten\BolClient\Entity
+ *
+ * @param $salutationCode
+ * @param $firstName
+ * @param $surName
+ * @param $streetName
+ * @param $houseNumber
+ * @param $houseNumberExtended
+ * @param $addressSupplement
+ * @param $extraAddressInformation
+ * @param $zipCode
+ * @param $city
+ * @param $countryCode
+ * @param $email
+ * @param $company
+ * @param $vatNumber
+ * @param $deliveryPhoneNumber
+ *
+ */
+
 class BolBillingDetails extends BolBaseModel {
-	public $attributes = [
+	protected $attributes = [
 		'salutationCode',
 		'firstName',
 		'surName',
