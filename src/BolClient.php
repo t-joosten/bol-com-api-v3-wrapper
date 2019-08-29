@@ -21,8 +21,8 @@ class BolClient {
 	public function __construct( $clientId, $clientSecret ) {
 		$this->apiUrl       = 'https://api.bol.com/retailer';
 		$this->client       = new Client( [] );
-		$this->clientId     = 'ea1488ea-42fd-4ded-a883-fc332349738f'; // $clientId;
-		$this->clientSecret = 'AK3tFvQXFI0FT29lzMtvisbtgBZYaNkPg6vzP651O8RxYdyITW3HRP2UXm3ICf4SPXNrIzRJzbf7fQ7OHLBlGhs'; // $clientSecret;
+		$this->clientId     = $clientId;
+		$this->clientSecret = $clientSecret;
 		$this->transformer  = new BolTransformer();
 		$this->token        = $this->getToken();
 	}
