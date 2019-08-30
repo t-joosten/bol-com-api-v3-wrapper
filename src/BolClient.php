@@ -5,6 +5,7 @@
  * Date: 4-7-2019
  * Time: 14:22
  */
+
 namespace Tjoosten\BolClient;
 
 use GuzzleHttp\Client;
@@ -59,8 +60,8 @@ class BolClient {
 				]
 			);
 
-			$data            = json_decode( $response->getBody() );
-			$orders = $this->transformer->transformCollection($data->orders, 'BolOrder');
+			$data   = json_decode( $response->getBody() );
+			$orders = $this->transformer->transformCollection( $data->orders, 'BolOrder' );
 
 			return $orders;
 		} catch ( GuzzleException $e ) {
@@ -79,10 +80,26 @@ class BolClient {
 				]
 			);
 
-			$data = json_decode( $response->getBody() );
-			$order = $this->transformer->transformToEntity($data, 'BolOrder');
+			$data  = json_decode( $response->getBody() );
+			$order = $this->transformer->transformToEntity( $data, 'BolOrder' );
 
 			return $order;
+		} catch ( GuzzleException $e ) {
+			throw $e;
+		}
+	}
+
+	public function shipOrderItem($orderItemId, array $data) {
+		try {
+			$response = $this->client->request( 'PUT', $this->apiUrl . '/orders/' . $orderItemId . '/shipment',
+				[
+					'headers' => [
+						'Authorization' => 'Bearer ' . $this->token,
+						'Accept'        => 'application/vnd.retailer.v3+json',
+					],
+					'json' => $data
+				]
+			);
 		} catch ( GuzzleException $e ) {
 			throw $e;
 		}
