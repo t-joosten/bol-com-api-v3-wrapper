@@ -89,15 +89,16 @@ class BolClient {
 		}
 	}
 
-	public function shipOrderItem($orderItemId, array $data) {
+	public function shipOrderItem( $orderItemId, array $data ) {
 		try {
 			$response = $this->client->request( 'PUT', $this->apiUrl . '/orders/' . $orderItemId . '/shipment',
 				[
 					'headers' => [
 						'Authorization' => 'Bearer ' . $this->token,
 						'Accept'        => 'application/vnd.retailer.v3+json',
+						'Content-Type'  => 'application/vnd.retailer.v3+json'
 					],
-					'json' => $data
+					'json'    => $data
 				]
 			);
 		} catch ( GuzzleException $e ) {
