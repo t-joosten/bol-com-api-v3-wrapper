@@ -85,7 +85,7 @@ class BolClient {
 
 			return $order;
 		} catch ( GuzzleException $e ) {
-			throw $e;
+			return [null, $e];
 		}
 	}
 
@@ -101,8 +101,9 @@ class BolClient {
 					'json'    => $data
 				]
 			);
+			return $response;
 		} catch ( GuzzleException $e ) {
-			throw $e;
+			return [null, $e];
 		}
 	}
 }
