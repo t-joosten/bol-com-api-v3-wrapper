@@ -20,7 +20,7 @@ class BolClientTest extends TestCase {
 	public function testUnauthorized() {
 		$client = new BolClient('fake', 'fake');
 		$res = $client->getOrders();
-		$this->assertEquals(400, $res->getCode());
+		$this->assertEquals(401, $res->getCode());
 	}
 
 	public function testGetOrders() {
@@ -34,4 +34,19 @@ class BolClientTest extends TestCase {
 		$res = $client->getOrder(2495728860 );
 		$this->assertTrue(true);
 	}
+
+    public function testGetShipment() {
+        $client = $this->instantiateBolClient();
+        $res = $client->getShipment(2774167840 );
+        $this->assertTrue(true);
+    }
+
+    public function testPutTransport() {
+        $client = $this->instantiateBolClient();
+        $res = $client->updateTransport(2495728860, [
+            "transporterCode" => "TNT_BRIEF",
+            "trackAndTrace" => "12392S34234"
+        ] );
+        $this->assertTrue(true);
+    }
 }

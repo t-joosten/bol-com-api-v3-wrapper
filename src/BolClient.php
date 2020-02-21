@@ -106,4 +106,41 @@ class BolClient {
 			return [null, $e];
 		}
 	}
+
+    public function getShipment($orderId) {
+	    try {
+            $response = $this->client->request( 'GET', $this->apiUrl . '/shipments?order-id=' . $orderId,
+                [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $this->token,
+                        'Accept'        => 'application/vnd.retailer.v3+json',
+                    ],
+                ]
+            );
+            $data  = json_decode( $response->getBody() );
+            $shipment = $this->transformer->transformCollection( $data, 'BolShipment' );
+
+            return $shipment;
+        } catch ( GuzzleException $e ) {
+            return [null, $e];
+        }
+    }
+
+    public function updateTransport($transportId, array $data) {
+        try {
+            $response = $this->client->request( 'PUT', $this->apiUrl . '/transports/' . $transportId,
+                [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $this->token,
+                        'Accept'        => 'application/vnd.retailer.v3+json',
+                        'Content-Type'  => 'application/vnd.retailer.v3+json'
+                    ],
+                    'json'    => $data
+                ]
+            );
+            return $response;
+        } catch ( GuzzleException $e ) {
+            return [null, $e];
+        }
+    }
 }
