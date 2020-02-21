@@ -44,7 +44,8 @@ class BolClientTest extends TestCase {
     public function testPutTransport() {
         $client = $this->instantiateBolClient();
         $res = $client->updateTransport(2495728860, [
-
+            "transporterCode" => "TNT_BRIEF",
+            "trackAndTrace" => "12392S34234"
         ] );
         $this->assertTrue(true);
     }
