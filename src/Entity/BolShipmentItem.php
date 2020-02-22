@@ -17,8 +17,16 @@ namespace Tjoosten\BolClient\Entity;
  */
 
 class BolShipmentItem extends BolBaseModel {
+    protected $childEntities = [];
+
     protected $attributes = [
         'orderItemId',
         'orderId'
     ];
+
+    protected $nestedEntities = [];
+
+    public function __construct() {
+        parent::__construct();
+    }
 }

@@ -21,9 +21,12 @@ class BolTransformer {
 
 	public function transformToEntity( $stdClass, string $entityName ) {
 		$model = $this->createModelByEntityName( $entityName );
+//        var_dump($stdClass);
 
 		foreach ( $stdClass as $key => $value ) {
+
 			if ( $model->keyExistsInAttributes( $key ) ) {
+//			    var_dump($key);
 				$model->$key = $value;
 			} else if ( $model->keyExistsInNestedEntities( $key ) ) {
 				$model->$key = $this->transformToEntity( $value, $model->getNestedEntityNameByKey($key) );

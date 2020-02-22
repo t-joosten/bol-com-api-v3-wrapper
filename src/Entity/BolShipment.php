@@ -35,6 +35,9 @@ class BolShipment extends BolBaseModel {
 
 	public $childEntities = [
         'shipmentItems' => 'BolShipmentItem',
+    ];
+
+	public $nestedEntities = [
         'transport' => 'BolTransport'
     ];
 }
