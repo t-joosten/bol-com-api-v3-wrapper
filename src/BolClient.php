@@ -118,6 +118,9 @@ class BolClient {
                 ]
             );
             $data  = json_decode( $response->getBody() );
+            if (!property_exists($data, 'shipments')) {
+                return null;
+            }
             $shipment = $this->transformer->transformCollection( $data->shipments, 'BolShipment' );
 
             return $shipment;
