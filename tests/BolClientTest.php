@@ -38,7 +38,6 @@ class BolClientTest extends TestCase {
     public function testGetShipment() {
         $client = $this->instantiateBolClient();
         $res = $client->getShipment(2774167840 );
-        var_dump($res);
         $this->assertTrue(true);
     }
 
