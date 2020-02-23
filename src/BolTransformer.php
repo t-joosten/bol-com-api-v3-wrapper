@@ -23,6 +23,7 @@ class BolTransformer {
 		$model = $this->createModelByEntityName( $entityName );
 
 		foreach ( $stdClass as $key => $value ) {
+
 			if ( $model->keyExistsInAttributes( $key ) ) {
 				$model->$key = $value;
 			} else if ( $model->keyExistsInNestedEntities( $key ) ) {

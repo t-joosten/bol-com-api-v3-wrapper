@@ -118,7 +118,7 @@ class BolClient {
                 ]
             );
             $data  = json_decode( $response->getBody() );
-            $shipment = $this->transformer->transformCollection( $data, 'BolShipment' );
+            $shipment = $this->transformer->transformCollection( $data->shipments, 'BolShipment' );
 
             return $shipment;
         } catch ( GuzzleException $e ) {
