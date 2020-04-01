@@ -61,6 +61,10 @@ class BolClient {
 			);
 
 			$data   = json_decode( $response->getBody() );
+			if (!isset($data->orders)) {
+			    return [];
+            }
+
 			$orders = $this->transformer->transformCollection( $data->orders, 'BolOrder' );
 
 			return $orders;
