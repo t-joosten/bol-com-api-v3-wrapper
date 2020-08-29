@@ -16,7 +16,7 @@ namespace Tjoosten\BolClient\Entity;
  * @package Tjoosten\BolClient\Entity
  *
  */
-class BolProcessStatus
+class BolProcessStatus extends BolBaseModel
 {
     protected $attributes = [
         'id',

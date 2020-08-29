@@ -11,7 +11,7 @@ namespace Tjoosten\BolClient\Entity;
  * @package Tjoosten\BolClient\Entity
  *
  */
-class BolProcessLinks
+class BolProcessLinks extends BolBaseModel
 {
     protected $attributes = [
         'rel',
