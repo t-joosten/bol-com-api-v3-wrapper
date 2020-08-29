@@ -105,7 +105,10 @@ class BolClient {
 					'json'    => $data
 				]
 			);
-			return $response;
+
+			$data = json_decode($response->getBody());
+			return $this->transformer->transformToEntity($data, 'BolProcessStatus');
+
 		} catch ( GuzzleException $e ) {
 			return [null, $e];
 		}
@@ -145,7 +148,10 @@ class BolClient {
                     'json'    => $data
                 ]
             );
-            return $response;
+
+            $data = json_decode($response->getBody());
+            return $this->transformer->transformToEntity($data, 'BolProcessStatus');
+
         } catch ( GuzzleException $e ) {
             return [null, $e];
         }
