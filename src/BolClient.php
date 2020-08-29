@@ -98,6 +98,25 @@ class BolClient
         }
     }
 
+    public function getProcessStatus($processId)
+    {
+        try {
+            $response = $this->client->request('GET', $this->apiUrl . '/process-status/' . $processId,
+                [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $this->token,
+                        'Accept' => 'application/vnd.retailer.v3+json',
+                    ]
+                ]
+            );
+
+            $data = json_decode($response->getBody());
+            return $this->transformer->transformToEntity($data, 'BolProcessStatus');
+        } catch (GuzzleException $e) {
+            return [null, $e];
+        }
+    }
+
     public function shipOrderItem($orderItemId, array $data)
     {
         try {
