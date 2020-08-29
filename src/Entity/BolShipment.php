@@ -10,8 +10,6 @@ namespace Tjoosten\BolClient\Entity;
 
 /**
  * Class BolOrderItem
- * @package Tjoosten\BolClient\Entity
- *
  * @param $orderItemId
  * @param $ean
  * @param $quantity
@@ -24,20 +22,22 @@ namespace Tjoosten\BolClient\Entity;
  * @param $offerCondition
  * @param $fulfilmentMethod
  *
+ * @package Tjoosten\BolClient\Entity
+ *
  */
-
-class BolShipment extends BolBaseModel {
-	protected $attributes = [
-		'shipmentId',
+class BolShipment extends BolBaseModel
+{
+    protected $attributes = [
+        'shipmentId',
         'shipmentDate',
         'shipmentReference',
-	];
+    ];
 
-	public $childEntities = [
+    public $childEntities = [
         'shipmentItems' => 'BolShipmentItem',
     ];
 
-	public $nestedEntities = [
+    public $nestedEntities = [
         'transport' => 'BolTransport'
     ];
 }

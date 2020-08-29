@@ -10,13 +10,13 @@ namespace Tjoosten\BolClient\Entity;
 
 /**
  * Class BolOrderItem
- * @package Tjoosten\BolClient\Entity
- *
  * @param $transportId
  *
+ * @package Tjoosten\BolClient\Entity
+ *
  */
-
-class BolTransport extends BolBaseModel {
+class BolTransport extends BolBaseModel
+{
     protected $attributes = [
         'transportId',
     ];

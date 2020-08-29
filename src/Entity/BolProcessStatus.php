@@ -5,8 +5,6 @@ namespace Tjoosten\BolClient\Entity;
 
 /**
  * Class BolProcessStatus
- * @package Tjoosten\BolClient\Entity
- *
  * @param $id
  * @param $entityId
  * @param $eventType
@@ -15,6 +13,8 @@ namespace Tjoosten\BolClient\Entity;
  * @param $errorMessage
  * @param $createTimestamp
  * @param $links
+ * @package Tjoosten\BolClient\Entity
+ *
  */
 class BolProcessStatus
 {

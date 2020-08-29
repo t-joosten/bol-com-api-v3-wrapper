@@ -8,36 +8,40 @@
 
 namespace Tjoosten\BolClient;
 
-class BolTransformer {
-	public function transformCollection( $data, string $entityName ) {
-		$collection = [];
+class BolTransformer
+{
+    public function transformCollection($data, string $entityName)
+    {
+        $collection = [];
 
-		foreach ( $data as $value ) {
-			$collection[] = $this->transformToEntity( $value, $entityName );
-		}
+        foreach ($data as $value) {
+            $collection[] = $this->transformToEntity($value, $entityName);
+        }
 
-		return $collection;
-	}
+        return $collection;
+    }
 
-	public function transformToEntity( $stdClass, string $entityName ) {
-		$model = $this->createModelByEntityName( $entityName );
+    public function transformToEntity($stdClass, string $entityName)
+    {
+        $model = $this->createModelByEntityName($entityName);
 
-		foreach ( $stdClass as $key => $value ) {
+        foreach ($stdClass as $key => $value) {
 
-			if ( $model->keyExistsInAttributes( $key ) ) {
-				$model->$key = $value;
-			} else if ( $model->keyExistsInNestedEntities( $key ) ) {
-				$model->$key = $this->transformToEntity( $value, $model->getNestedEntityNameByKey($key) );
-			} else if ( $model->keyExistsInChildEntities( $key ) ) {
-				$model->$key = $this->transformCollection( $value, $model->getChildEntityNameByKey($key) );
-			}
-		}
+            if ($model->keyExistsInAttributes($key)) {
+                $model->$key = $value;
+            } else if ($model->keyExistsInNestedEntities($key)) {
+                $model->$key = $this->transformToEntity($value, $model->getNestedEntityNameByKey($key));
+            } else if ($model->keyExistsInChildEntities($key)) {
+                $model->$key = $this->transformCollection($value, $model->getChildEntityNameByKey($key));
+            }
+        }
 
-		return $model;
-	}
+        return $model;
+    }
 
-	private function createModelByEntityName( string $entityName ) {
-		$entityClass = 'Tjoosten\\BolClient\\Entity\\' . $entityName;
-		return new $entityClass;
-	}
+    private function createModelByEntityName(string $entityName)
+    {
+        $entityClass = 'Tjoosten\\BolClient\\Entity\\' . $entityName;
+        return new $entityClass;
+    }
 }

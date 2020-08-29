@@ -11,29 +11,26 @@ namespace Tjoosten\BolClient\Entity;
 
 /**
  * Class BolOrder
- * @package Tjoosten\BolClient\Entity
- *
  * @param $orderId
  * @param $dateTimeOrderPlaced
  * @param $orderItems
  * @param $customerDetails
  *
+ * @package Tjoosten\BolClient\Entity
+ *
  */
+class BolOrder extends BolBaseModel
+{
+    public $attributes = [
+        'orderId',
+        'dateTimeOrderPlaced',
+    ];
 
-class BolOrder extends BolBaseModel {
-	public $attributes = [
-		'orderId',
-		'dateTimeOrderPlaced',
-	];
+    public $nestedEntities = [
+        'customerDetails' => 'BolCustomerDetails'
+    ];
 
-	public $nestedEntities = [
-		'customerDetails' => 'BolCustomerDetails'
-	];
-
-	public $childEntities = [
-		'orderItems' => 'BolOrderItem'
-	];
-
-	public function __construct() {
-	}
+    public $childEntities = [
+        'orderItems' => 'BolOrderItem'
+    ];
 }

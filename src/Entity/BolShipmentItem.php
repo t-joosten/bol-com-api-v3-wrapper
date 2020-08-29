@@ -10,13 +10,13 @@ namespace Tjoosten\BolClient\Entity;
 
 /**
  * Class BolOrderItem
- * @package Tjoosten\BolClient\Entity
- *
  * @param $orderItemId
  * @param $orderId
+ * @package Tjoosten\BolClient\Entity
+ *
  */
-
-class BolShipmentItem extends BolBaseModel {
+class BolShipmentItem extends BolBaseModel
+{
     protected $childEntities = [];
 
     protected $attributes = [
@@ -25,8 +25,4 @@ class BolShipmentItem extends BolBaseModel {
     ];
 
     protected $nestedEntities = [];
-
-    public function __construct() {
-        parent::__construct();
-    }
 }
