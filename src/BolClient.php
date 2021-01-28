@@ -20,6 +20,9 @@ class BolClient
     private $apiUrl;
     private $transformer;
 
+    private $tokenExpiresInSeconds = 299;
+    private $latestRefresh;
+
     public function __construct($clientId, $clientSecret)
     {
         $this->apiUrl = 'https://api.bol.com/retailer';
@@ -32,6 +35,11 @@ class BolClient
 
     private function getToken()
     {
+        $now = time();
+        if ($this->latestRefresh && ($now - $this->latestRefresh) < $this->tokenExpiresInSeconds) {
+            return $this->token;
+        }
+
         try {
             $response = $this->client->request('POST', 'https://login.bol.com/token?grant_type=client_credentials',
                 [
@@ -46,6 +54,9 @@ class BolClient
 
             $result = json_decode($response->getBody()->getContents());
 
+            $this->tokenExpiresInSeconds = $result->expires_in = 299;
+            $this->latestRefresh = $now;
+
             return $result->access_token;
         } catch (GuzzleException $e) {
             throw $e;
@@ -58,7 +69,7 @@ class BolClient
             $response = $this->client->request('GET', $this->apiUrl . '/orders?page=' . $page . '&fulfilment-method=' . $fulfilmentMethod,
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $this->token,
+                        'Authorization' => 'Bearer ' . $this->getToken(),
                         'Accept' => 'application/vnd.retailer.v3+json',
                     ]
                 ]
@@ -83,7 +94,7 @@ class BolClient
             $response = $this->client->request('GET', $this->apiUrl . '/orders/' . $orderId,
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $this->token,
+                        'Authorization' => 'Bearer ' . $this->getToken(),
                         'Accept' => 'application/vnd.retailer.v3+json',
                     ]
                 ]
@@ -104,7 +115,7 @@ class BolClient
             $response = $this->client->request('GET', $this->apiUrl . '/process-status/' . $processId,
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $this->token,
+                        'Authorization' => 'Bearer ' . $this->getToken(),
                         'Accept' => 'application/vnd.retailer.v3+json',
                     ]
                 ]
@@ -123,7 +134,7 @@ class BolClient
             $response = $this->client->request('PUT', $this->apiUrl . '/orders/' . $orderItemId . '/shipment',
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $this->token,
+                        'Authorization' => 'Bearer ' . $this->getToken(),
                         'Accept' => 'application/vnd.retailer.v3+json',
                         'Content-Type' => 'application/vnd.retailer.v3+json'
                     ],
@@ -145,7 +156,7 @@ class BolClient
             $response = $this->client->request('GET', $this->apiUrl . '/shipments?order-id=' . $orderId,
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $this->token,
+                        'Authorization' => 'Bearer ' . $this->getToken(),
                         'Accept' => 'application/vnd.retailer.v3+json',
                     ],
                 ]
@@ -168,7 +179,7 @@ class BolClient
             $response = $this->client->request('PUT', $this->apiUrl . '/transports/' . $transportId,
                 [
                     'headers' => [
-                        'Authorization' => 'Bearer ' . $this->token,
+                        'Authorization' => 'Bearer ' . $this->getToken(),
                         'Accept' => 'application/vnd.retailer.v3+json',
                         'Content-Type' => 'application/vnd.retailer.v3+json'
                     ],
