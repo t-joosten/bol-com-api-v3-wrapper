@@ -5,7 +5,7 @@ namespace Tjoosten\BolClient\Entity;
 
 /**
  * Class BolProcessStatus
- * @param $id
+ * @param $processStatusId
  * @param $entityId
  * @param $eventType
  * @param $description
@@ -19,7 +19,7 @@ namespace Tjoosten\BolClient\Entity;
 class BolProcessStatus extends BolBaseModel
 {
     protected $attributes = [
-        'id',
+        'processStatusId',
         'entityId',
         'eventType',
         'description',

@@ -10,17 +10,17 @@ namespace Tjoosten\BolClient\Entity;
  */
 
 /**
- * Class BolOrder
+ * Class BolShipmentOrder
  * @param $orderId
  * @param $orderPlacedDateTime
- * @param $orderItems
  * @param $shipmentDetails
  * @param $billingDetails
+ * @param $orderItems
  *
  * @package Tjoosten\BolClient\Entity
  *
  */
-class BolOrder extends BolBaseModel
+class BolShipmentOrder extends BolBaseModel
 {
     public $attributes = [
         'orderId',

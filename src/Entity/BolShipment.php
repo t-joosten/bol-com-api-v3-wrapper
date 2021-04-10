@@ -9,18 +9,12 @@
 namespace Tjoosten\BolClient\Entity;
 
 /**
- * Class BolOrderItem
- * @param $orderItemId
- * @param $ean
- * @param $quantity
- * @param $cancelRequest
- * @param $offerReference
- * @param $title
- * @param $offerPrice
- * @param $transactionFee
- * @param $latestDeliveryDate
- * @param $offerCondition
- * @param $fulfilmentMethod
+ * Class BolShipment
+ * @param $shipmentId
+ * @param $shipmentDateTime
+ * @param $shipmentReference
+ * @param $shipmentItems
+ * @param $transport
  *
  * @package Tjoosten\BolClient\Entity
  *
@@ -29,7 +23,7 @@ class BolShipment extends BolBaseModel
 {
     protected $attributes = [
         'shipmentId',
-        'shipmentDate',
+        'shipmentDateTime',
         'shipmentReference',
     ];
 

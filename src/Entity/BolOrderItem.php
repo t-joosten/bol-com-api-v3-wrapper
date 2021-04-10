@@ -11,16 +11,15 @@ namespace Tjoosten\BolClient\Entity;
 /**
  * Class BolOrderItem
  * @param $orderItemId
- * @param $ean
  * @param $quantity
- * @param $cancelRequest
- * @param $offerReference
- * @param $title
- * @param $offerPrice
- * @param $transactionFee
- * @param $latestDeliveryDate
- * @param $offerCondition
- * @param $fulfilmentMethod
+ * @param $commission
+ * @param $fulfilment
+ * @param $quantityShipped
+ * @param $quantityCancelled
+ * @param $unitPrice
+ * @param $totalPrice
+ * @param $offer
+ * @param $product
  *
  * @package Tjoosten\BolClient\Entity
  *
@@ -29,15 +28,17 @@ class BolOrderItem extends BolBaseModel
 {
     protected $attributes = [
         'orderItemId',
-        'ean',
         'quantity',
-        'cancelRequest',
-        'offerReference',
-        'title',
-        'offerPrice',
-        'transactionFee',
-        'latestDeliveryDate',
-        'offerCondition',
-        'fulfilmentMethod',
+        'commission',
+        'quantityShipped',
+        'quantityCancelled',
+        'unitPrice',
+        'totalPrice',
+    ];
+
+    public $nestedEntities = [
+        'fulfilment' => 'BolFulfilment',
+        'offer' => 'BolOffer',
+        'product' => 'BolProduct',
     ];
 }

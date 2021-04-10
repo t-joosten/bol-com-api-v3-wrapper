@@ -9,9 +9,9 @@
 namespace Tjoosten\BolClient\Entity;
 
 /**
- * Class BolOrderItem
+ * Class BolShipmentItem
  * @param $orderItemId
- * @param $orderId
+ * @param $order
  * @package Tjoosten\BolClient\Entity
  *
  */
@@ -21,8 +21,9 @@ class BolShipmentItem extends BolBaseModel
 
     protected $attributes = [
         'orderItemId',
-        'orderId'
     ];
 
-    protected $nestedEntities = [];
+    public $nestedEntities = [
+        'order' => 'BolShipmentOrder'
+    ];
 }

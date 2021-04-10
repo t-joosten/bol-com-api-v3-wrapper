@@ -10,13 +10,12 @@ namespace Tjoosten\BolClient\Entity;
 
 /**
  * Class BolBillingDetails
- * @param $salutationCode
+ * @param $salutation
  * @param $firstName
- * @param $surName
+ * @param $surname
  * @param $streetName
  * @param $houseNumber
- * @param $houseNumberExtended
- * @param $addressSupplement
+ * @param $houseNumberExtension
  * @param $extraAddressInformation
  * @param $zipCode
  * @param $city
@@ -24,7 +23,6 @@ namespace Tjoosten\BolClient\Entity;
  * @param $email
  * @param $company
  * @param $vatNumber
- * @param $deliveryPhoneNumber
  *
  * @package Tjoosten\BolClient\Entity
  *
@@ -32,13 +30,12 @@ namespace Tjoosten\BolClient\Entity;
 class BolBillingDetails extends BolBaseModel
 {
     protected $attributes = [
-        'salutationCode',
+        'salutation',
         'firstName',
-        'surName',
+        'surname',
         'streetName',
         'houseNumber',
-        'houseNumberExtended',
-        'addressSupplement',
+        'houseNumberExtension',
         'extraAddressInformation',
         'zipCode',
         'city',
@@ -46,6 +43,5 @@ class BolBillingDetails extends BolBaseModel
         'email',
         'company',
         'vatNumber',
-        'deliveryPhoneNumber',
     ];
 }
