@@ -54,7 +54,8 @@ class BolClient
 
             $result = json_decode($response->getBody()->getContents());
 
-            $this->tokenExpiresInSeconds = $result->expires_in = 299;
+            $buffer = 15;
+            $this->tokenExpiresInSeconds = $result->expires_in - $buffer;
             $this->latestRefresh = $now;
 
             return $result->access_token;
