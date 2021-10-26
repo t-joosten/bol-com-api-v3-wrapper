@@ -71,7 +71,7 @@ class BolClient
                 [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->getToken(),
-                        'Accept' => 'application/vnd.retailer.v5+json',
+                        'Accept' => 'application/vnd.retailer.v6+json',
                     ]
                 ]
             );
@@ -96,7 +96,7 @@ class BolClient
                 [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->getToken(),
-                        'Accept' => 'application/vnd.retailer.v5+json',
+                        'Accept' => 'application/vnd.retailer.v6+json',
                     ]
                 ]
             );
@@ -117,7 +117,7 @@ class BolClient
                 [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->getToken(),
-                        'Accept' => 'application/vnd.retailer.v5+json',
+                        'Accept' => 'application/vnd.retailer.v6+json',
                     ]
                 ]
             );
@@ -138,8 +138,8 @@ class BolClient
                 [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->getToken(),
-                        'Accept' => 'application/vnd.retailer.v5+json',
-                        'Content-Type' => 'application/vnd.retailer.v5+json'
+                        'Accept' => 'application/vnd.retailer.v6+json',
+                        'Content-Type' => 'application/vnd.retailer.v6+json'
                     ],
                     'json' => $data
                 ]
@@ -160,7 +160,7 @@ class BolClient
                 [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->getToken(),
-                        'Accept' => 'application/vnd.retailer.v5+json',
+                        'Accept' => 'application/vnd.retailer.v6+json',
                     ],
                 ]
             );
@@ -183,8 +183,8 @@ class BolClient
                 [
                     'headers' => [
                         'Authorization' => 'Bearer ' . $this->getToken(),
-                        'Accept' => 'application/vnd.retailer.v5+json',
-                        'Content-Type' => 'application/vnd.retailer.v5+json'
+                        'Accept' => 'application/vnd.retailer.v6+json',
+                        'Content-Type' => 'application/vnd.retailer.v6+json'
                     ],
                     'json' => $data
                 ]
